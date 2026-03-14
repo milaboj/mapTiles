@@ -16,10 +16,10 @@ The third tile set combines the previous tile sets into one where both layers ar
 
 ![comb](/img/combined.png)
 
-The last tile set 
+The last tile set is nature themed with lots of blues and greens and I also added a little bit of light pink to represent the beautiful cherry blossoms in Seattle depending on how zoomed in the user is.
 
-![4](/img/combined.png)
+![nature](/img/nature.png)
 
 
-The base map tile set, piped creek watershed tile set, combined tile set, and mapbox tile set each have zoom levels available from 0-10. 
+The base map tile set, piped creek watershed tile set, and combined tile set set each have zoom levels available from 0-10. The nature themed tile set had zoom levels from 5-15 available.
 
