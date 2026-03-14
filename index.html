@@ -84,40 +84,58 @@
 
         map.on('load', () => { //simplifying the function statement: arrow with brackets to define a function
 
-            map.addSource('pastel-tiles', {
+            map.addSource('base-tiles', {
                 'type': 'raster',
                 'tiles': [
-                    'assets/pastel-theme/{z}/{x}/{y}.png'
+                    'assets/baseMap/{z}/{x}/{y}.png'
                 ],
                 'tileSize': 256,
                 'attribution': 'Map tiles designed by Mila Bojanic</a>'
             });
 
-            map.addSource('lgbtq-tiles', {
+            map.addSource('combined-tiles', {
                 'type': 'raster',
                 'tiles': [
-                    'assets/lgbtq/{z}/{x}/{y}.png'
+                    'assets/combined/{z}/{x}/{y}.png'
                 ],
                 'tileSize': 256,
-                'attribution': 'Map tiles designed by Bo Zhao'
+                'attribution': 'Map tiles designed by Mila Bojanic'
+            });
+
+            map.addSource('watershed-tiles', {
+                'type': 'raster',
+                'tiles': [
+                    'assets/creekWatersheds/{z}/{x}/{y}.png'
+                ],
+                'tileSize': 256,
+                'attribution': 'Map tiles designed by Mila Bojanic'
             });
 
             map.addLayer({
-                'id': 'pastel',
+                'id': 'base',
                 'type': 'raster',
                 'layout': {
                     'visibility': 'none'
                 },
-                'source': 'pastel-tiles'
+                'source': 'base-tiles'
             });
 
             map.addLayer({
-                'id': 'lgbtq',
+                'id': 'combined',
                 'type': 'raster',
                 'layout': {
                     'visibility': 'none'
                 },
-                'source': 'lgbtq-tiles'
+                'source': 'combined-tiles'
+            });
+
+            map.addLayer({
+                'id': 'watershed',
+                'type': 'raster',
+                'layout': {
+                    'visibility': 'none'
+                },
+                'source': 'watershed-tiles'
             });
 
         });
@@ -126,12 +144,12 @@
         // After the last frame rendered before the map enters an "idle" state.
         map.on('idle', () => {
             // If these two layers were not added to the map, abort
-            if (!map.getLayer('pastel') || !map.getLayer('lgbtq')) {
+            if (!map.getLayer('base') || !map.getLayer('combined')|| !map.getLayer('watershed')) {
                 return;
             }
 
             // Enumerate ids of the layers.
-            const toggleableLayerIds = ['pastel', 'lgbtq'];
+            const toggleableLayerIds = ['base', 'combined', 'watershed'];
 
             // Set up the corresponding toggle button for each layer.
             for (const id of toggleableLayerIds) {
